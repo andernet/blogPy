@@ -1,0 +1,61 @@
+pa_autoconfigure_django.py https://github.com/andernet/blogPy.git
+
+
+https://github.com/andernet/blogPy.git
+
+Enquanto assiste a execução da ferramenta, você pode ver o que ela está fazendo:
+
+    Baixando o seu código do GitHub;
+    Criando um virtualenv no PythonAnywhere, igual ao que existe no seu computador
+    Atualizando o seu arquivo de configuração com algumas configurações sobre o deploy;
+    Criando um banco de dados no PythonAnywhere usando o comando manage.py migrate;
+    Criando os seus arquivos estáticos (nós aprenderemos sobre eles mais tarde)
+    E configurando o PythonAnywhere para servir a sua web app através da sua API.
+
+No PythonAnywhere, todos esses passos são automatizados, mas são os mesmos que você executaria ao utilizar qualquer outro provedor.
+
+Agora, é importante notar que o seu banco de dados no PythonAnywhere é completamente separado do banco de dados no seu computador — isso significa que eles têm posts e contas de admin diferentes. Por causa disso, da mesma forma que fizemos nos nossos computadores, precisamos iniciar a conta de admin com o comando createsuperuser. O PythonAnywhere já ativou o seu virtualenv automaticamente, então tudo o que você precisa fazer é executar o comando:
+
+linha de comando do PythonAnywhere
+
+(ola.pythonanywhere.com) $ python manage.py createsuperuser
+
+Digite as informações sobre a sua conta de admin. É mais fácil usar as mesmos que usou no seu computador pra evitar qualquer confusão, a menos que você queira criar uma senha mais segura para a conta no PythonAnywhere.
+
+Agora, se quiser, você pode dar uma olhada no seu código no PythonAnywhere usando ls:
+
+linha de comando do PythonAnywhere
+
+(ola.pythonanywhere.com) $ ls
+blog  db.sqlite3  manage.py  mysite requirements.txt static
+(ola.pythonanywhere.com) $ ls blog/
+__init__.py  __pycache__  admin.py  apps.py  migrations  models.py
+tests.py  views.py
+
+Você também pode visitar a aba "Files" e dar uma olhada usando o gerenciador de arquivos do PythonAnywhere. (Da página do console, você pode navegar para outras páginas do PythonAnywhere utilizando o botão menu no canto superior direito. Quando você estiver em uma dessas páginas, outros links serão exibidos perto do topo.)
+Estamos no ar!
+
+Agora, seu site deve estar no ar! Clique na aba "Web" do PythonAnywhere para pegar o link dele. Você pode compartilhar esse link com quem quiser :)
+
+    Observação: Este é um tutorial para iniciantes e ao fazer o deploy do site desta forma, nós tomamos alguns atalhos que não são ideais do ponto de vista de segurança. Se e quando você decidir continuar trabalhando nesse projeto ou começar um novo, você deve revisar a checklist de implantação do Django para pegar algumas dicas de como tornar seu site seguro.
+
+Dicas de debugging
+
+Se você vir um erro ao rodar o script pa_autoconfigure_django.py, aqui vão algumas causas comuns:
+
+    Esquecer de criar um token de API do PythonAnywhere.
+    Digitar a URL do seu GitHub incorretamente.
+    Se você vir um erro dizendo "Could not find your settings.py" (settings.py não encontrado), você provavelmente não adicionou todos os seus arquivos ao Git e/ou você não fez o push deles para o GitHub. Dê uma revisada na sessão sobre Git acima
+
+Se você vir um erro ao visitar o seu site, o primeiro lugar para procurar informações sobre ele é o log de erros. Você vai encontrar um link para o log na aba Web do PythonAnywhere. Verifique se há alguma mensagem de erro no log; as mais recentes estarão no final.
+
+Há também algumas dicas de debugging no site de ajuda da PythonAnywhere.
+
+E lembre-se, a sua monitora está aí pra ajudar!
+Visite o seu site!
+
+A página padrão no seu site deverá dizer "It worked!" ("Funcionou!"), igual ao seu ambiente local. Adicione /admin ao final da URL e você será levada ao site de administração. Faça o login com o nome de usuário e a senha, e você verá que pode adicionar novas postagens no servidor -- lembre-se de que as postagens do banco de dados de teste local não foram enviadas para o seu blog no ar.
+
+Depois de criar alguns posts, você pode voltar para o seu ambiente local (não o PythonAnywhere). Daqui pra frente você deve trabalhar no seu ambiente local para fazer alterações. Este workflow é comum no desenvolvimento web – fazer alteracões locais, subir essas alteracões pro GitHub, e baixar essas alterações para o seu servidor web de produção. Isto permite que você desenvolva e experimente sem quebrar o seu site que está no ar. Bem legal, né?
+
+Você merece MUITOS parabéns! Deploys em servidores são uma das partes mais complicadas do desenvolvimento web e não é incomum levar vários dias até conseguir fazer com que isso funcione. Mas você já tem seu site publicado na internet!
