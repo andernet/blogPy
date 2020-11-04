@@ -1,0 +1,2 @@
+# blogPy
+Desenvolvido em python.
